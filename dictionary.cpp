@@ -8,10 +8,10 @@ Dictionary::~Dictionary() {
 }
 
 Element* Dictionary::clone() {
-    // Deep copy keyValues
     Dictionary* dictionary = new Dictionary();
+    // Deep copy keyValues
     for (KeyValuePair& keyValuePair : this->keyValues) {
-        dictionary->addKeyValuePair(keyValuePair);
+        dictionary->addKeyValuePair(keyValuePair.clone());
     }
     return dictionary;
 }
@@ -35,7 +35,7 @@ void Dictionary::addKeyValuePair(KeyValuePair pair) {
 std::shared_ptr<Element> Dictionary::getValue(const Benstring& key) {
     for (KeyValuePair& keyValue : this->keyValues) {
         if (*keyValue.getKey() == key) {
-            return std::shared_ptr<Element>(keyValue.getValue());
+            return keyValue.getValue();
         }
     }
     // TODO: Throw specific exception type

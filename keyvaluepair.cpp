@@ -1,27 +1,25 @@
 #include "keyvaluepair.h"
 #include <iostream>
 
-KeyValuePair::KeyValuePair(std::shared_ptr<Benstring> key, Element* value) : key(key), value(value->clone()) {
+KeyValuePair::KeyValuePair(std::shared_ptr<Benstring> key, std::shared_ptr<Element> value) : key(key), value(value) {
 }
 
-KeyValuePair::KeyValuePair(const std::string key, Element* value) {
+KeyValuePair::KeyValuePair(const std::string key, std::shared_ptr<Element> value) {
     this->key = std::shared_ptr<Benstring>(new Benstring(key));
-    this->value = value->clone();
+    this->value = value;
 }
 
 KeyValuePair::KeyValuePair(const KeyValuePair &obj) {
     this->key = obj.key;
-    this->value = obj.value->clone();
-}
-
-KeyValuePair::KeyValuePair(KeyValuePair&& obj) {
-    this->key = obj.key;
     this->value = obj.value;
-    obj.value = nullptr;
 }
 
 KeyValuePair::~KeyValuePair() {
-    delete value;
+}
+
+KeyValuePair KeyValuePair::clone() {
+    return KeyValuePair(std::shared_ptr<Benstring>((Benstring*)this->key->clone()),
+                        std::shared_ptr<Element>(this->value->clone()));
 }
 
 void KeyValuePair::print() {
@@ -34,5 +32,5 @@ std::shared_ptr<Benstring> KeyValuePair::getKey() {
 }
 
 std::shared_ptr<Element> KeyValuePair::getValue() {
-    return std::shared_ptr<Element>(this->value->clone());
+    return this->value;
 }

@@ -35,7 +35,7 @@ std::shared_ptr<Element> Parser::parse(const char* input, int length, int *usedL
             std::shared_ptr<Element> value = parse(input + curPos, length - curPos, &valueBenLength);
             curPos += valueBenLength;
             // Add key with value to dictionary
-            dictionary->addKeyValuePair(KeyValuePair(key, value.get()));
+            dictionary->addKeyValuePair(KeyValuePair(key, value));
         }
         curPos++;
         break;}
