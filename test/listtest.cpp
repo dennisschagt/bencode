@@ -3,7 +3,7 @@
 
 // Check if exception is raised if NULL element is passed
 bool test1() {
-    List list;
+    Bencode::List list;
     try {
         list.addElement(nullptr);
     } catch (const char* ex) {
@@ -15,7 +15,7 @@ bool test1() {
 
 // Empty list should not enter body of foreach loop
 bool test2() {
-    List list;
+    Bencode::List list;
     for (auto element : list) {
         std::cout << "Foreach loop over empty list should not enter loop body" << std::endl;
         return true;
@@ -26,8 +26,8 @@ bool test2() {
 // List.begin() should return the same element that is added to the list;
 // After one increase the iterator should be equal to List.end() (if there is one item in the list)
 bool test3() {
-    List list;
-    std::shared_ptr<Integer> integer(new Integer);
+    Bencode::List list;
+    std::shared_ptr<Bencode::Integer> integer(new Bencode::Integer);
     list.addElement(integer);
     if (*list.begin() != integer) {
         std::cout << "*List.begin() should return the same element that is added to the list" << std::endl;

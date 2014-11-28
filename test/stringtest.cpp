@@ -3,7 +3,7 @@
 
 // Initial value test
 bool test1() {
-    Benstring benstring;
+    Bencode::Benstring benstring;
     if (benstring.getLength() != 0) {
         std::cout << "Length of empty string should be 0" << std::endl;
         return true;
@@ -13,7 +13,7 @@ bool test1() {
 
 // Check if length is returned when getting bytestring
 bool test2() {
-    Benstring benstring("test", 4);
+    Bencode::Benstring benstring("test", 4);
     char* byteString = new char[benstring.getLength()];
     int length = benstring.getString(byteString);
     delete[] byteString;
@@ -27,7 +27,7 @@ bool test2() {
 // Check if std::string initialized Benstring returns the correct bytestring and length
 bool test3() {
     std::string str = "test";
-    Benstring benstring(str);
+    Bencode::Benstring benstring(str);
     char* byteString = new char[benstring.getLength()];
     int length = benstring.getString(byteString);
     if (length != static_cast<int>(str.length())) {

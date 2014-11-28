@@ -3,7 +3,7 @@
 
 // Initial value test
 bool test1() {
-    Integer integer;
+    Bencode::Integer integer;
     if (integer.getValue() != 0) {
         std::cout << "Initial value of bencode-Integer not 0" << std::endl;
         return true;
@@ -13,7 +13,7 @@ bool test1() {
 
 // Test .setValue() and .getValue()
 bool test2() {
-    Integer integer;
+    Bencode::Integer integer;
     int value = 1;
     integer.setValue(value);
     if (integer.getValue() != value) {
@@ -26,7 +26,7 @@ bool test2() {
 // Check max value of bencode-Integer
 bool test3() {
     int64_t max64bitValue = 9223372036854775807;
-    Integer integer(max64bitValue);
+    Bencode::Integer integer(max64bitValue);
     if (integer.getValue() != max64bitValue) {
         std::cout << "Bencode::Integer should support 64-bit integers" << std::endl;
         return true;

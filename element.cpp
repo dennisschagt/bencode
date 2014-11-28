@@ -1,7 +1,9 @@
 #include "element.h"
 
-Element::Element() {
-}
+namespace Bencode {
+    Element::Element() {
+    }
 
-Element::~Element() {
+    Element::~Element() {
+    }
 }

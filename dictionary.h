@@ -6,16 +6,18 @@
 #include <vector>
 #include <memory>
 
-class Dictionary : public Element {
-    std::vector<KeyValuePair> keyValues;
-public:
-    Dictionary();
-    ~Dictionary();
-    Element* clone();
-    void print();
-    Type getType();
-    void addKeyValuePair(KeyValuePair pair);
-    std::shared_ptr<Element> getValue(const Benstring& key);
-};
+namespace Bencode {
+    class Dictionary : public Element {
+        std::vector<KeyValuePair> keyValues;
+    public:
+        Dictionary();
+        ~Dictionary();
+        Element* clone();
+        void print();
+        Type getType();
+        void addKeyValuePair(KeyValuePair pair);
+        std::shared_ptr<Element> getValue(const Benstring& key);
+    };
+}
 
 #endif
