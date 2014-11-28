@@ -15,7 +15,7 @@ public:
     void print();
     Type getType();
     void addKeyValuePair(KeyValuePair pair);
-    std::unique_ptr<Element> getValue(const Benstring& key);
+    std::shared_ptr<Element> getValue(const Benstring& key);
 };
 
 #endif

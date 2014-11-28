@@ -32,10 +32,10 @@ void Dictionary::addKeyValuePair(KeyValuePair pair) {
     this->keyValues.push_back(pair);
 }
 
-std::unique_ptr<Element> Dictionary::getValue(const Benstring& key) {
+std::shared_ptr<Element> Dictionary::getValue(const Benstring& key) {
     for (KeyValuePair& keyValue : this->keyValues) {
-        if (keyValue.getKey() == key) {
-            return std::unique_ptr<Element>(keyValue.getValue());
+        if (*keyValue.getKey() == key) {
+            return std::shared_ptr<Element>(keyValue.getValue());
         }
     }
     // TODO: Throw specific exception type

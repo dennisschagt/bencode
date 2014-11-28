@@ -15,17 +15,18 @@ std::shared_ptr<Element> Parser::parse(const char* input, int length, int *usedL
     std::shared_ptr<Element> currentElement;
     int curPos = 0;
     switch(input[curPos]) {
-    case 'd': // Parse Dictionary
-        currentElement = std::shared_ptr<Element>(new Dictionary());
+    case 'd': {// Parse Dictionary
+        std::shared_ptr<Dictionary> dictionary(new Dictionary());
+        currentElement = dictionary;
         curPos++;
         // Parse dictionary entries
         while (curPos < length && input[curPos] != 'e') {
             // Parse key
             int keyBenLength;
-            std::shared_ptr<Element> key = parse(input + curPos, length - curPos, &keyBenLength);
+            std::shared_ptr<Benstring> key = std::dynamic_pointer_cast<Benstring>(parse(input + curPos, length - curPos, &keyBenLength));
             curPos += keyBenLength;
             // Check if key is benString
-            if (key->getType() != Type::BENSTRING) {
+            if (key == nullptr) {
                 // TODO: Throw useful exception
                 throw "ERROR: Key should be a benstring in Bencode::Parser::parse()";
             }
@@ -34,11 +35,10 @@ std::shared_ptr<Element> Parser::parse(const char* input, int length, int *usedL
             std::shared_ptr<Element> value = parse(input + curPos, length - curPos, &valueBenLength);
             curPos += valueBenLength;
             // Add key with value to dictionary
-            (dynamic_cast<Dictionary*>(currentElement.get()))->
-                    addKeyValuePair(KeyValuePair(*dynamic_cast<Benstring*>(key.get()), value.get()));
+            dictionary->addKeyValuePair(KeyValuePair(key, value.get()));
         }
         curPos++;
-        break;
+        break;}
     case '0'...'9': { // Parse Benstring
         int strLength = 0;
         // Determine string length
@@ -55,12 +55,12 @@ std::shared_ptr<Element> Parser::parse(const char* input, int length, int *usedL
             throw "ERROR: String longer than input bencode in Bencode::Parser::parse()";
         }
         curPos++;
-        currentElement = std::unique_ptr<Element>(new Benstring(input + curPos, strLength));
+        currentElement = std::shared_ptr<Element>(new Benstring(input + curPos, strLength));
         curPos += strLength;
         break;}
     case 'l': // Parse List
         curPos++;
-        currentElement = std::unique_ptr<Element>(new List());
+        currentElement = std::shared_ptr<Element>(new List());
         while (curPos < length && input[curPos] != 'e') {
             // Parse element
             int elementBenLength;
