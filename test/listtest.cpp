@@ -23,7 +23,8 @@ bool test2() {
     return false;
 }
 
-// List.begin() should return the same element that is added to the list
+// List.begin() should return the same element that is added to the list;
+// After one increase the iterator should be equal to List.end() (if there is one item in the list)
 bool test3() {
     List list;
     std::shared_ptr<Integer> integer(new Integer);
@@ -32,8 +33,17 @@ bool test3() {
         std::cout << "*List.begin() should return the same element that is added to the list" << std::endl;
         return true;
     }
+    auto beginIt = list.begin();
+    ++beginIt;
+    auto endIt = list.end();
+    if (beginIt != endIt) {
+        std::cout << "The iterators should be same after one increase as there is only one element in the list" << std::endl;
+        return true;
+    }
     return false;
 }
+
+// TODO: Write a test to check the order of elements in a list with multiple elements
 
 int main() {
     bool error = false;
