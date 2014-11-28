@@ -1,0 +1,2 @@
+- Write unit tests for Dictionary, List, KeyValuePair, and Parser
+- Check if Dictionary, Parser, and KeyValuePair have the right shared_ptr/cloning behaviour
