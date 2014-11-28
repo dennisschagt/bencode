@@ -23,7 +23,7 @@ Type List::getType() {
 void List::print() {
     std::cout << 'l';
     // Print List's contents
-    for (std::shared_ptr<Element> const& element : this->elements) {
+    for (std::shared_ptr<Element> element : this->elements) {
         element->print();
     }
     std::cout << 'e';
@@ -33,6 +33,32 @@ void List::addElement(std::shared_ptr<Element> element) {
     if (element) {
         this->elements.push_back(element);
     } else {
+        // TODO: Throw more specific exception type
         throw "ERROR: shared_ptr to element should not be null";
     }
+}
+
+std::shared_ptr<Element> List::getElement(int index) {
+    return this->elements[index];
+}
+
+ListIterator List::begin() {
+    return ListIterator(this, 0);
+}
+
+ListIterator List::end() {
+    return ListIterator(this, this->elements.size());
+}
+
+bool ListIterator::operator!=(const ListIterator& other) {
+    return curIndex != other.curIndex;
+}
+
+std::shared_ptr<Element> ListIterator::operator*() {
+    return list->getElement(curIndex);
+}
+
+const ListIterator& ListIterator::operator++() {
+    ++curIndex;
+    return *this;
 }
