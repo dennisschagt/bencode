@@ -2,7 +2,8 @@ include_directories(..)
 
 set(tests   IntegerTest
             StringTest
-            ListTest)
+            ListTest
+            KeyValuePairTest)
 
 foreach(testName ${tests})
     string(TOLOWER ${testName} filename)
