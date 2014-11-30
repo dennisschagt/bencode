@@ -1,4 +1,5 @@
 #include "dictionary.h"
+#include "exception.h"
 #include <iostream>
 
 namespace Bencode {
@@ -39,7 +40,7 @@ namespace Bencode {
                 return keyValue.getValue();
             }
         }
-        // TODO: Throw specific exception type
-        throw "ERROR: Key not found in dictionary";
+        // TODO: Test exception
+        throw KeyNotFoundException();
     }
 }

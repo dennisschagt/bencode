@@ -8,5 +8,6 @@
 #include "keyvaluepair.h"
 #include "list.h"
 #include "parser.h"
+#include "exception.h"
 
 #endif

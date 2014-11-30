@@ -15,4 +15,5 @@ add_library(bencode STATIC
         integer.cpp
         keyvaluepair.cpp
         list.cpp
-        parser.cpp)
+        parser.cpp
+        exception.cpp)
