@@ -17,8 +17,6 @@ bool test1() {
     return false;
 }
 
-// TODO: Create tests
-
 int main() {
     bool error = false;
     error |= test1();

@@ -1,4 +1,5 @@
 #include "list.h"
+#include "exception.h"
 #include <iostream>
 
 namespace Bencode {
@@ -34,8 +35,8 @@ namespace Bencode {
         if (element) {
             this->elements.push_back(element);
         } else {
-            // TODO: Throw more specific exception type
-            throw "ERROR: shared_ptr to element should not be null";
+            // TODO: Throw more specific exception
+            throw Exception();
         }
     }
 

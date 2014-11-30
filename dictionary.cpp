@@ -40,7 +40,6 @@ namespace Bencode {
                 return keyValue.getValue();
             }
         }
-        // TODO: Test exception
         throw KeyNotFoundException();
     }
 }

@@ -9,6 +9,10 @@ namespace Bencode {
     class KeyNotFoundException : public Exception {
     
     };
+    
+    class ParseException : public Exception {
+    
+    };
 }
 
 #endif

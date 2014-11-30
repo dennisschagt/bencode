@@ -1,4 +1,3 @@
-- Generate specific Bencode exceptions
 - Write unit tests for Dictionary and Parser
 - Check if Dictionary and Parser have the right shared_ptr/cloning behaviour
 - Add operator==() and operator!=() to Dictionary, List, and KeyValuePair; Write tests for these functions

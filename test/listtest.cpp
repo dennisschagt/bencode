@@ -6,7 +6,7 @@ bool test1() {
     Bencode::List list;
     try {
         list.addElement(nullptr);
-    } catch (const char* ex) {
+    } catch (Bencode::Exception ex) {
         return false;
     }
     std::cout << "List.addElement() should raise an exception if a nullptr is fed to it" << std::endl;

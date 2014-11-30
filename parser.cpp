@@ -4,6 +4,7 @@
 #include "keyvaluepair.h"
 #include "integer.h"
 #include "list.h"
+#include "exception.h"
 
 namespace Bencode {
     Parser::Parser() {
@@ -28,8 +29,7 @@ namespace Bencode {
                 curPos += keyBenLength;
                 // Check if key is benString
                 if (key == nullptr) {
-                    // TODO: Throw useful exception
-                    throw "ERROR: Key should be a benstring in Bencode::Parser::parse()";
+                    throw ParseException();
                 }
                 // Parse value
                 int valueBenLength;
@@ -45,15 +45,13 @@ namespace Bencode {
             // Determine string length
             while (curPos < length && input[curPos] != ':') {
                 if (input[curPos] < '0' || input[curPos] > '9') {
-                    // TODO: Throw useful exception
-                    throw "ERROR: Error at determining string length in Bencode::Parser::parse()";
+                    throw ParseException();
                 }
                 strLength = 10 * strLength + (input[curPos] - '0');
                 curPos++;
             }
             if (curPos + strLength >= length) {
-                // TODO: Throw useful exception
-                throw "ERROR: String longer than input bencode in Bencode::Parser::parse()";
+                throw ParseException();
             }
             curPos++;
             currentElement = std::shared_ptr<Element>(new Benstring(input + curPos, strLength));
@@ -76,8 +74,7 @@ namespace Bencode {
             int64_t value = 0;
             while (curPos < length && input[curPos] != 'e') {
                 if (input[curPos] < '0' || input[curPos] > '9') {
-                    // TODO: Throw useful exception
-                    throw "ERROR: Error reading integer in Bencode::Parser::parse()";
+                    throw ParseException();
                 }
                 value = 10 * value + (input[curPos] - '0');
                 curPos++;
@@ -86,12 +83,11 @@ namespace Bencode {
             curPos++;
             break;}
         default: // Not a valid start for a bencode element
-            // TODO: Throw useful exception
-            throw "ERROR: Default case in Bencode::Parser::parse()";
+            throw ParseException();
         }
         if (curPos > length) {
-            // TODO: Throw useful exception
-            throw "ERROR: Bencode input not complete";
+            // TODO: Throw more specific exception
+            throw ParseException();
         }
         if (usedLength) {
             *usedLength = curPos;
