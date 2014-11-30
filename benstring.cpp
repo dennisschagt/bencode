@@ -53,6 +53,10 @@ namespace Bencode {
         }
         return true;
     }
+    
+    bool Benstring::operator!=(const Benstring &other) {
+        return !this->operator==(other);
+    }
 
     Type Benstring::getType() {
         return Type::BENSTRING;

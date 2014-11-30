@@ -46,10 +46,34 @@ bool test3() {
     return false;
 }
 
+// Check Benstring equality function (equal)
+bool test4() {
+    Bencode::Benstring str1("test");
+    Bencode::Benstring str2(std::string("test").c_str(), 4);
+    if (str1 != str2) {
+        std::cout << "Strings with equal content should be equal" << std::endl;
+        return true;
+    }
+    return false;
+}
+
+// Check Benstring equality function (not equal)
+bool test5() {
+    Bencode::Benstring str1("test1");
+    Bencode::Benstring str2("test2");
+    if (str1 == str2) {
+        std::cout << "Strings with different content are not equal" << std::endl;
+        return true;
+    }
+    return false;
+}
+
 int main() {
     bool error = false;
     error |= test1();
     error |= test2();
     error |= test3();
+    error |= test4();
+    error |= test5();
     return error;
 }

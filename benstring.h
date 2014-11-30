@@ -19,6 +19,7 @@ namespace Bencode {
         void print();
         void operator=(const Benstring &other);
         bool operator==(const Benstring &other);
+        bool operator!=(const Benstring &other);
         Type getType();
         int getLength();
         int getString(char* byteString);
