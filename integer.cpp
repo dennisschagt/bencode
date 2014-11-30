@@ -20,6 +20,17 @@ namespace Bencode {
     void Integer::print() {
         std::cout << 'i' << value << 'e';
     }
+    
+    bool Integer::operator==(const Integer &other) {
+        if (this->value == other.value) {
+            return true;
+        }
+        return false;
+    }
+    
+    bool Integer::operator!=(const Integer &other) {
+        return !this->operator==(other);
+    }
 
     void Integer::setValue(int64_t value) {
         this->value = value;

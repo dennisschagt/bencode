@@ -13,6 +13,8 @@ namespace Bencode {
         ~Integer();
         Element* clone();
         void print();
+        bool operator==(const Integer &other);
+        bool operator!=(const Integer &other);
         Type getType();
         void setValue(int64_t value);
         int64_t getValue();

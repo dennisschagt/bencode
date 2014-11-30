@@ -34,10 +34,34 @@ bool test3() {
     return false;
 }
 
+// Check Integer equality function (equal)
+bool test4() {
+    Bencode::Integer int1(1);
+    Bencode::Integer int2(1);
+    if (int1 != int2) {
+        std::cout << "Integers with equal value should be equal" << std::endl;
+        return true;
+    }
+    return false;
+}
+
+// Check Integer equality function (not equal)
+bool test5() {
+    Bencode::Integer int1(1);
+    Bencode::Integer int2(2);
+    if (int1 == int2) {
+        std::cout << "Integers with different values are not equal" << std::endl;
+        return true;
+    }
+    return false;
+}
+
 int main() {
     bool error = false;
     error |= test1();
     error |= test2();
     error |= test3();
+    error |= test4();
+    error |= test5();
     return error;
 }
