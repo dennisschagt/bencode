@@ -1,11 +1,13 @@
 include_directories(..)
 
-set(tests   IntegerTest
-            StringTest
-            ListTest
-            KeyValuePairTest)
+set(bencodeTests    IntegerTest
+                    StringTest
+                    ListTest
+                    KeyValuePairTest
+                    DictionaryTest
+                    ParserTest)
 
-foreach(testName ${tests})
+foreach(testName ${bencodeTests})
     string(TOLOWER ${testName} filename)
     set(filename ${filename}.cpp)
     set(testName Bencode${testName})
