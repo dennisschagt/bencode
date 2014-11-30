@@ -17,7 +17,7 @@ namespace Bencode {
         std::shared_ptr<Element> currentElement;
         int curPos = 0;
         switch(input[curPos]) {
-        case 'd': {// Parse Dictionary
+        case 'd': { // Parse Dictionary
             std::shared_ptr<Dictionary> dictionary(new Dictionary());
             currentElement = dictionary;
             curPos++;
@@ -51,6 +51,7 @@ namespace Bencode {
                 curPos++;
             }
             if (curPos + strLength >= length) {
+                // TODO: Throw more specific exception
                 throw ParseException();
             }
             curPos++;

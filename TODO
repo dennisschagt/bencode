@@ -1,3 +1,3 @@
-- Check if Dictionary and Parser have the right shared_ptr/cloning behaviour
+- Check for nullptr when adding elements
 - Add operator==() and operator!=() to Dictionary, List, and KeyValuePair; Write tests for these functions
 - Increase coverage of unit tests for Dictionary and Parser
