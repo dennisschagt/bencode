@@ -3,6 +3,7 @@
 
 #include "element.h"
 #include "keyvaluepair.h"
+#include "benstring.h"
 #include <vector>
 #include <memory>
 
@@ -17,6 +18,7 @@ namespace Bencode {
         Type getType();
         void addKeyValuePair(KeyValuePair pair);
         std::shared_ptr<Element> getValue(const Benstring& key);
+        std::shared_ptr<Benstring> getValueBenstring(const Benstring& key);
     };
 }
 

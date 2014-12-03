@@ -42,4 +42,8 @@ namespace Bencode {
         }
         throw KeyNotFoundException();
     }
+    
+    std::shared_ptr<Benstring> Dictionary::getValueBenstring(const Benstring& key) {
+        return std::dynamic_pointer_cast<Benstring>(this->getValue(key));
+    }
 }
