@@ -13,6 +13,10 @@ namespace Bencode {
     class ParseException : public Exception {
     
     };
+    
+    class WrongTypeException : public Exception {
+    
+    };
 }
 
 #endif
