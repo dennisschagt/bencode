@@ -4,6 +4,7 @@
 #include "element.h"
 #include "keyvaluepair.h"
 #include "benstring.h"
+#include "integer.h"
 #include "list.h"
 #include <vector>
 #include <memory>
@@ -20,8 +21,10 @@ namespace Bencode {
         void addKeyValuePair(KeyValuePair pair);
         bool doesKeyExist(const Benstring& key);
         std::shared_ptr<Element> getValue(const Benstring& key);
-        std::shared_ptr<Benstring> getValueBenstring(const Benstring& key);
-        std::shared_ptr<List> getValueList(const Benstring& key);
+        std::shared_ptr<Benstring> getValueBS(const Benstring& key);
+        std::shared_ptr<List> getValueL(const Benstring& key);
+        std::shared_ptr<Dictionary> getValueD(const Benstring& key);
+        std::shared_ptr<Integer> getValueI(const Benstring& key);
     };
 }
 
