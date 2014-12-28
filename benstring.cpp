@@ -71,4 +71,8 @@ namespace Bencode {
         memcpy(bytestring, this->ben_str.get(), this->length);
         return this->length;
     }
+    
+    std::string Benstring::getString() {
+        return std::string(this->ben_str.get(), this->length);
+    }
 }

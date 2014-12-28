@@ -23,6 +23,7 @@ namespace Bencode {
         Type getType();
         int getLength();
         int getString(char* byteString);
+        std::string getString();
     };
 }
 
