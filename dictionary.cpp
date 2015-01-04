@@ -67,4 +67,12 @@ namespace Bencode {
         }
         return std::dynamic_pointer_cast<List>(this->getValue(key));
     }
+    
+    std::shared_ptr<Integer> Dictionary::getValueI(const Benstring& key) {
+        auto value = this->getValue(key);
+        if (value->getType() != Type::INTEGER) {
+            throw WrongTypeException();
+        }
+        return std::dynamic_pointer_cast<Integer>(value);
+    }
 }
