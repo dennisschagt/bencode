@@ -1,5 +1,4 @@
 #include "parser.h"
-#include "dictionary.h"
 #include "benstring.h"
 #include "keyvaluepair.h"
 #include "integer.h"
@@ -98,5 +97,9 @@ namespace Bencode {
 
     std::shared_ptr<Element> Parser::parse(const std::string input) {
         return this->parse(input.c_str(), input.length());
+    }
+    
+    std::shared_ptr<Dictionary> Parser::parseD(const char* input, int length) {
+        return std::dynamic_pointer_cast<Dictionary>(this->parse(input, length));
     }
 }
