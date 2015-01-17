@@ -111,6 +111,14 @@ namespace Bencode {
         return std::dynamic_pointer_cast<Dictionary>(this->parse(input, length));
     }
     
+    std::shared_ptr<List> Parser::parseL(const char* input, int length) {
+        return std::dynamic_pointer_cast<List>(this->parse(input, length));
+    }
+    
+    std::shared_ptr<Benstring> Parser::parseB(const char* input, int length) {
+        return std::dynamic_pointer_cast<Benstring>(this->parse(input, length));
+    }
+    
     std::shared_ptr<Integer> Parser::parseI(const char* input, int length) {
         return std::dynamic_pointer_cast<Integer>(this->parse(input, length));
     }
