@@ -9,7 +9,7 @@ namespace Bencode {
         std::shared_ptr<Benstring> key;
         std::shared_ptr<Element> value;
     public:
-        KeyValuePair(std::shared_ptr<Benstring>, std::shared_ptr<Element> value);
+        KeyValuePair(std::shared_ptr<Benstring> key, std::shared_ptr<Element> value);
         KeyValuePair(const std::string key, std::shared_ptr<Element> value);
         KeyValuePair(const KeyValuePair& obj);
         ~KeyValuePair();

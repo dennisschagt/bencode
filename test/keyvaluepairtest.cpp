@@ -17,8 +17,26 @@ bool test1() {
     return false;
 }
 
+// Check if exception is generated when KeyValuePair is initialized with nullptr key or value
+bool test2() {
+    try {
+        Bencode::KeyValuePair keyValuePair((std::shared_ptr<Bencode::Benstring>)nullptr, nullptr);
+        std::cout << "Constructors for KeyValuePair should raise an exception if a nullptr is fed to it" << std::endl;
+        return true;
+    } catch (Bencode::NullptrElementException ex) {
+    }
+    try {
+        Bencode::KeyValuePair keyValuePair("", nullptr);
+        std::cout << "Constructors for KeyValuePair should raise an exception if a nullptr is fed to it" << std::endl;
+        return true;
+    } catch (Bencode::NullptrElementException ex) {
+    }
+    return false;
+}
+
 int main() {
     bool error = false;
     error |= test1();
+    error |= test2();
     return error;
 }

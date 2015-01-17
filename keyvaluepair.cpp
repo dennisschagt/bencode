@@ -1,11 +1,19 @@
 #include "keyvaluepair.h"
+#include "exception.h"
 #include <iostream>
 
 namespace Bencode {
     KeyValuePair::KeyValuePair(std::shared_ptr<Benstring> key, std::shared_ptr<Element> value) : key(key), value(value) {
+        if (!key || !value) {
+            throw NullptrElementException();
+        }
     }
 
     KeyValuePair::KeyValuePair(const std::string key, std::shared_ptr<Element> value) {
+        if (! value) {
+            throw NullptrElementException();
+        }
+        
         this->key = std::shared_ptr<Benstring>(new Benstring(key));
         this->value = value;
     }

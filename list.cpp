@@ -32,12 +32,10 @@ namespace Bencode {
     }
 
     void List::addElement(std::shared_ptr<Element> element) {
-        if (element) {
-            this->elements.push_back(element);
-        } else {
-            // TODO: Throw more specific exception
-            throw Exception();
+        if (! element) {
+            throw NullptrElementException();
         }
+        this->elements.push_back(element);
     }
 
     std::shared_ptr<Element> List::getElement(int index) {
