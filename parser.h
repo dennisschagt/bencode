@@ -14,6 +14,7 @@ namespace Bencode {
         std::shared_ptr<Element> parse(const char* input, int length, int *usedLength = nullptr);
         std::shared_ptr<Element> parse(const std::string input);
         std::shared_ptr<Dictionary> parseD(const char* input, int length);
+        std::shared_ptr<Integer> parseI(const char* input, int length);
     };
 }
 

@@ -25,7 +25,7 @@ bool test2() {
 
 // Check max value of bencode-Integer
 bool test3() {
-    int64_t max64bitValue = 9223372036854775807;
+    int64_t max64bitValue = INT64_MAX;
     Bencode::Integer integer(max64bitValue);
     if (integer.getValue() != max64bitValue) {
         std::cout << "Bencode::Integer should support 64-bit integers" << std::endl;
@@ -34,8 +34,19 @@ bool test3() {
     return false;
 }
 
-// Check Integer equality function (equal)
+// Check min value of bencode-Integer
 bool test4() {
+    int64_t min64bitValue = INT64_MIN;
+    Bencode::Integer integer(min64bitValue);
+    if (integer.getValue() != min64bitValue) {
+        std::cout << "Bencode::Integer should support 64-bit integers" << std::endl;
+        return true;
+    }
+    return false;
+}
+
+// Check Integer equality function (equal)
+bool test5() {
     Bencode::Integer int1(1);
     Bencode::Integer int2(1);
     if (int1 != int2) {
@@ -46,7 +57,7 @@ bool test4() {
 }
 
 // Check Integer equality function (not equal)
-bool test5() {
+bool test6() {
     Bencode::Integer int1(1);
     Bencode::Integer int2(2);
     if (int1 == int2) {
@@ -63,5 +74,6 @@ int main() {
     error |= test3();
     error |= test4();
     error |= test5();
+    error |= test6();
     return error;
 }

@@ -72,12 +72,20 @@ namespace Bencode {
         case 'i':{ // Parse Integer
             curPos++;
             int64_t value = 0;
+            bool isNegative = false;
+            if (curPos < length && input[curPos] == '-') {
+                isNegative = true;
+                curPos++;
+            }
             while (curPos < length && input[curPos] != 'e') {
                 if (input[curPos] < '0' || input[curPos] > '9') {
                     throw ParseException();
                 }
                 value = 10 * value + (input[curPos] - '0');
                 curPos++;
+            }
+            if (isNegative) {
+                value *= -1;
             }
             currentElement = std::shared_ptr<Element>(new Integer(value));
             curPos++;
@@ -101,5 +109,9 @@ namespace Bencode {
     
     std::shared_ptr<Dictionary> Parser::parseD(const char* input, int length) {
         return std::dynamic_pointer_cast<Dictionary>(this->parse(input, length));
+    }
+    
+    std::shared_ptr<Integer> Parser::parseI(const char* input, int length) {
+        return std::dynamic_pointer_cast<Integer>(this->parse(input, length));
     }
 }
