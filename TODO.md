@@ -1,3 +1,4 @@
+- Add build instructions to readme
 - Add operator==() and operator!=() to Dictionary, List, and KeyValuePair; Write tests for these functions
 - Increase coverage of unit tests for Dictionary and Parser
 - Check for TODOs in source code
