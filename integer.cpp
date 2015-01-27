@@ -21,6 +21,10 @@ namespace Bencode {
         std::cout << 'i' << value << 'e';
     }
     
+    void Integer::convertToBencode(std::ostream &ss) {
+        ss << 'i' << value << 'e';
+    }
+    
     bool Integer::operator==(const Integer &other) {
         if (this->value == other.value) {
             return true;

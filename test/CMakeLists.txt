@@ -5,7 +5,8 @@ set(bencodeTests    IntegerTest
                     ListTest
                     KeyValuePairTest
                     DictionaryTest
-                    ParserTest)
+                    ParserTest
+                    ConvertToBencodeTest)
 
 foreach(testName ${bencodeTests})
     string(TOLOWER ${testName} filename)

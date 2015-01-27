@@ -25,6 +25,14 @@ namespace Bencode {
         }
         std::cout << "e";
     }
+    
+    void Dictionary::convertToBencode(std::ostream &ss) {
+        ss << "d";
+        for (KeyValuePair keyValue : keyValues) {
+            keyValue.convertToBencode(ss);
+        }
+        ss << "e";
+    }
 
     Type Dictionary::getType() {
         return Type::DICTIONARY;

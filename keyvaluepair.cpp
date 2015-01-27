@@ -35,6 +35,11 @@ namespace Bencode {
         key->print();
         value->print();
     }
+    
+    void KeyValuePair::convertToBencode(std::ostream &ss) {
+        key->convertToBencode(ss);
+        value->convertToBencode(ss);
+    }
 
     std::shared_ptr<Benstring> KeyValuePair::getKey() {
         return this->key;

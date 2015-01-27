@@ -35,6 +35,13 @@ namespace Bencode {
             std::cout << this->ben_str.get()[i];
         }
     }
+    
+    void Benstring::convertToBencode(std::ostream &ss) {
+        ss << this->length << ':';
+        for (int i = 0; i < length; ++i) {
+            ss << this->ben_str.get()[i];
+        }
+    }
 
     void Benstring::operator=(const Benstring &other) {
         this->ben_str = std::unique_ptr<char>(new char[other.length]);

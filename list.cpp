@@ -30,6 +30,15 @@ namespace Bencode {
         }
         std::cout << 'e';
     }
+    
+    void List::convertToBencode(std::ostream &ss) {
+        ss << 'l';
+        // Conver list's elements
+        for (std::shared_ptr<Element> element : this->elements) {
+            element->convertToBencode(ss);
+        }
+        ss << 'e';
+    }
 
     void List::addElement(std::shared_ptr<Element> element) {
         if (! element) {
