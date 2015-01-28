@@ -1,6 +1,6 @@
 #include "list.h"
 #include "exception.h"
-#include <iostream>
+#include <sstream>
 
 namespace Bencode {
     List::List() {
@@ -20,15 +20,6 @@ namespace Bencode {
 
     Type List::getType() {
         return Type::LIST;
-    }
-
-    void List::print() {
-        std::cout << 'l';
-        // Print List's contents
-        for (std::shared_ptr<Element> element : this->elements) {
-            element->print();
-        }
-        std::cout << 'e';
     }
     
     void List::convertToBencode(std::ostream &ss) {

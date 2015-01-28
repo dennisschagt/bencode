@@ -1,6 +1,6 @@
 #include "dictionary.h"
 #include "exception.h"
-#include <iostream>
+#include <sstream>
 
 namespace Bencode {
     Dictionary::Dictionary() {
@@ -16,14 +16,6 @@ namespace Bencode {
             dictionary->addKeyValuePair(keyValuePair.clone());
         }
         return dictionary;
-    }
-
-    void Dictionary::print() {
-        std::cout << "d";
-        for (KeyValuePair keyValue : keyValues) {
-            keyValue.print();
-        }
-        std::cout << "e";
     }
     
     void Dictionary::convertToBencode(std::ostream &ss) {

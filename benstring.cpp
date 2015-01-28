@@ -1,6 +1,6 @@
 #include "benstring.h"
 #include <cstring>
-#include <iostream>
+#include <sstream>
 
 namespace Bencode {
     Benstring::Benstring() {
@@ -27,13 +27,6 @@ namespace Bencode {
 
     Element* Benstring::clone() {
         return new Benstring(this->ben_str.get(), this->length);
-    }
-
-    void Benstring::print() {
-        std::cout << this->length << ':';
-        for (int i = 0; i < length; ++i) {
-            std::cout << this->ben_str.get()[i];
-        }
     }
     
     void Benstring::convertToBencode(std::ostream &ss) {

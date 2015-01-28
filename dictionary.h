@@ -16,7 +16,6 @@ namespace Bencode {
         Dictionary();
         ~Dictionary();
         Element* clone();
-        void print();
         void convertToBencode(std::ostream &ss);
         Type getType();
         void addKeyValuePair(KeyValuePair pair);

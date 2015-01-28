@@ -1,6 +1,6 @@
 #include "keyvaluepair.h"
 #include "exception.h"
-#include <iostream>
+#include <sstream>
 
 namespace Bencode {
     KeyValuePair::KeyValuePair(std::shared_ptr<Benstring> key, std::shared_ptr<Element> value) : key(key), value(value) {
@@ -29,11 +29,6 @@ namespace Bencode {
     KeyValuePair KeyValuePair::clone() {
         return KeyValuePair(std::shared_ptr<Benstring>((Benstring*)this->key->clone()),
                             std::shared_ptr<Element>(this->value->clone()));
-    }
-
-    void KeyValuePair::print() {
-        key->print();
-        value->print();
     }
     
     void KeyValuePair::convertToBencode(std::ostream &ss) {

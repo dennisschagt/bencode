@@ -12,7 +12,6 @@ namespace Bencode {
         Integer(int64_t value);
         ~Integer();
         Element* clone();
-        void print();
         void convertToBencode(std::ostream &ss);
         bool operator==(const Integer &other);
         bool operator!=(const Integer &other);

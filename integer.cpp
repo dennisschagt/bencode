@@ -1,5 +1,5 @@
 #include "integer.h"
-#include <iostream>
+#include <sstream>
 
 namespace Bencode {
     Integer::Integer() {
@@ -15,10 +15,6 @@ namespace Bencode {
 
     Element* Integer::clone() {
         return new Integer(this->value);
-    }
-
-    void Integer::print() {
-        std::cout << 'i' << value << 'e';
     }
     
     void Integer::convertToBencode(std::ostream &ss) {
