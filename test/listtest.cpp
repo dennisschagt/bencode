@@ -43,8 +43,6 @@ bool test3() {
     return false;
 }
 
-// TODO: Write a test to check the order of elements in a list with multiple elements
-
 int main() {
     bool error = false;
     error |= test1();

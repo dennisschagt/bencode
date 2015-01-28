@@ -68,8 +68,6 @@ bool test5() {
     return false;
 }
 
-// TODO: Add test for testing `std::string getString()`
-
 int main() {
     bool error = false;
     error |= test1();

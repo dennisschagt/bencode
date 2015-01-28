@@ -26,7 +26,7 @@ namespace Bencode {
                 int keyBenLength;
                 std::shared_ptr<Benstring> key = std::dynamic_pointer_cast<Benstring>(parse(input + curPos, length - curPos, &keyBenLength));
                 curPos += keyBenLength;
-                // Check if key is benString
+                // Check if key is a benString
                 if (key == nullptr) {
                     throw ParseException();
                 }
@@ -50,8 +50,7 @@ namespace Bencode {
                 curPos++;
             }
             if (curPos + strLength >= length) {
-                // TODO: Throw more specific exception
-                throw ParseException();
+                throw EndOfInputException();
             }
             curPos++;
             currentElement = std::shared_ptr<Element>(new Benstring(input + curPos, strLength));
@@ -94,8 +93,7 @@ namespace Bencode {
             throw ParseException();
         }
         if (curPos > length) {
-            // TODO: Throw more specific exception
-            throw ParseException();
+            throw EndOfInputException();
         }
         if (usedLength) {
             *usedLength = curPos;

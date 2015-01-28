@@ -73,7 +73,7 @@ namespace Bencode {
         return this->length;
     }
 
-    // TODO: Document or at least check if given array is big enough
+    // The input array should have at least this->getLength() length
     int Benstring::getString(char* bytestring) {
         memcpy(bytestring, this->ben_str.get(), this->length);
         return this->length;
