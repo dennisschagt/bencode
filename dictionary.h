@@ -21,10 +21,10 @@ namespace Bencode {
         void addKeyValuePair(KeyValuePair pair);
         bool doesKeyExist(const Benstring& key);
         std::shared_ptr<Element> getValue(const Benstring& key);
-        std::shared_ptr<Benstring> getValueBS(const Benstring& key);
-        std::shared_ptr<List> getValueL(const Benstring& key);
-        std::shared_ptr<Dictionary> getValueD(const Benstring& key);
-        std::shared_ptr<Integer> getValueI(const Benstring& key);
+        std::shared_ptr<Benstring> getBenstring(const Benstring& key);
+        std::shared_ptr<List> getList(const Benstring& key);
+        std::shared_ptr<Dictionary> getDictionary(const Benstring& key);
+        std::shared_ptr<Integer> getInteger(const Benstring& key);
     };
 }
 

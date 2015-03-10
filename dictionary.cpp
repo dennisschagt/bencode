@@ -52,7 +52,7 @@ namespace Bencode {
         throw KeyNotFoundException();
     }
     
-    std::shared_ptr<Benstring> Dictionary::getValueBS(const Benstring& key) {
+    std::shared_ptr<Benstring> Dictionary::getBenstring(const Benstring& key) {
         auto value = this->getValue(key);
         if (value->getType() != Type::BENSTRING) {
             throw WrongTypeException();
@@ -60,15 +60,23 @@ namespace Bencode {
         return std::dynamic_pointer_cast<Benstring>(value);
     }
     
-    std::shared_ptr<List> Dictionary::getValueL(const Benstring& key) {
+    std::shared_ptr<List> Dictionary::getList(const Benstring& key) {
         auto value = this->getValue(key);
         if (value->getType() != Type::LIST) {
             throw WrongTypeException();
         }
-        return std::dynamic_pointer_cast<List>(this->getValue(key));
+        return std::dynamic_pointer_cast<List>(value);
+    }
+	
+	std::shared_ptr<Dictionary> Dictionary::getDictionary(const Benstring& key) {
+        auto value = this->getValue(key);
+        if (value->getType() != Type::DICTIONARY) {
+            throw WrongTypeException();
+        }
+        return std::dynamic_pointer_cast<Dictionary>(value);
     }
     
-    std::shared_ptr<Integer> Dictionary::getValueI(const Benstring& key) {
+    std::shared_ptr<Integer> Dictionary::getInteger(const Benstring& key) {
         auto value = this->getValue(key);
         if (value->getType() != Type::INTEGER) {
             throw WrongTypeException();
