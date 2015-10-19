@@ -18,10 +18,10 @@ namespace Bencode {
         return dictionary;
     }
     
-    void Dictionary::convertToBencode(std::ostream &ss) {
+    void Dictionary::toBencode(std::ostream &ss) {
         ss << "d";
         for (KeyValuePair keyValue : keyValues) {
-            keyValue.convertToBencode(ss);
+            keyValue.toBencode(ss);
         }
         ss << "e";
     }
@@ -34,7 +34,7 @@ namespace Bencode {
         this->keyValues.push_back(pair);
     }
     
-    bool Dictionary::doesKeyExist(const Benstring& key) {
+    bool Dictionary::contains(const Benstring& key) {
         for (KeyValuePair& keyValue : this->keyValues) {
             if (*keyValue.getKey() == key) {
                 return true;

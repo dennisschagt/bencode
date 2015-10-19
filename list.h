@@ -14,7 +14,7 @@ namespace Bencode {
         List();
         ~List();
         Element* clone();
-        void convertToBencode(std::ostream &ss);
+        void toBencode(std::ostream &ss);
         Type getType();
         void addElement(std::shared_ptr<Element> element);
         std::shared_ptr<Element> getElement(int index);

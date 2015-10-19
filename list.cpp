@@ -22,11 +22,11 @@ namespace Bencode {
         return Type::LIST;
     }
     
-    void List::convertToBencode(std::ostream &ss) {
+    void List::toBencode(std::ostream &ss) {
         ss << 'l';
         // Conver list's elements
         for (std::shared_ptr<Element> element : this->elements) {
-            element->convertToBencode(ss);
+            element->toBencode(ss);
         }
         ss << 'e';
     }

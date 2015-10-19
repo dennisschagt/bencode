@@ -12,7 +12,7 @@ namespace Bencode {
         virtual ~Element();
         virtual Element* clone() = 0;
         virtual Type getType() = 0;
-        virtual void convertToBencode(std::ostream &ss) = 0;
+        virtual void toBencode(std::ostream &ss) = 0;
     };
 }
 

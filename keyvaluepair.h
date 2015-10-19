@@ -14,7 +14,7 @@ namespace Bencode {
         KeyValuePair(const KeyValuePair& obj);
         ~KeyValuePair();
         KeyValuePair clone();
-        void convertToBencode(std::ostream &ss);
+        void toBencode(std::ostream &ss);
         std::shared_ptr<Benstring> getKey();
         std::shared_ptr<Element> getValue();
     };

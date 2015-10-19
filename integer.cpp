@@ -17,7 +17,7 @@ namespace Bencode {
         return new Integer(this->value);
     }
     
-    void Integer::convertToBencode(std::ostream &ss) {
+    void Integer::toBencode(std::ostream &ss) {
         ss << 'i' << value << 'e';
     }
     

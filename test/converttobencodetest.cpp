@@ -6,9 +6,9 @@ bool testConversionOfParsedBencode(std::string bencode, std::string testName) {
     Bencode::Parser parser;
     auto element = parser.parse(bencode.c_str(), bencode.length());
     std::stringstream output;
-    element->convertToBencode(output);
+    element->toBencode(output);
     if (output.str() != bencode) {
-        std::cout << "Error in convertToBencode: " << testName << std::endl;
+        std::cout << "Error in toBencode: " << testName << std::endl;
         return true;
     }
     return false;

@@ -16,7 +16,7 @@ namespace Bencode {
         Benstring(Benstring&& obj);
         ~Benstring();
         Element* clone();
-        void convertToBencode(std::ostream &ss);
+        void toBencode(std::ostream &ss);
         void operator=(const Benstring &other);
         bool operator==(const Benstring &other);
         bool operator!=(const Benstring &other);

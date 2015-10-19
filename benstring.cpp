@@ -29,7 +29,7 @@ namespace Bencode {
         return new Benstring(this->ben_str.get(), this->length);
     }
     
-    void Benstring::convertToBencode(std::ostream &ss) {
+    void Benstring::toBencode(std::ostream &ss) {
         ss << this->length << ':';
         for (int i = 0; i < length; ++i) {
             ss << this->ben_str.get()[i];

@@ -31,9 +31,9 @@ namespace Bencode {
                             std::shared_ptr<Element>(this->value->clone()));
     }
     
-    void KeyValuePair::convertToBencode(std::ostream &ss) {
-        key->convertToBencode(ss);
-        value->convertToBencode(ss);
+    void KeyValuePair::toBencode(std::ostream &ss) {
+        key->toBencode(ss);
+        value->toBencode(ss);
     }
 
     std::shared_ptr<Benstring> KeyValuePair::getKey() {

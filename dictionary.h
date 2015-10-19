@@ -16,10 +16,10 @@ namespace Bencode {
         Dictionary();
         ~Dictionary();
         Element* clone();
-        void convertToBencode(std::ostream &ss);
+        void toBencode(std::ostream &ss);
         Type getType();
         void addKeyValuePair(KeyValuePair pair);
-        bool doesKeyExist(const Benstring& key);
+        bool contains(const Benstring& key);
         std::shared_ptr<Element> getValue(const Benstring& key);
         std::shared_ptr<Benstring> getBenstring(const Benstring& key);
         std::shared_ptr<List> getList(const Benstring& key);
