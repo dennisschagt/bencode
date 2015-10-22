@@ -6,4 +6,8 @@ namespace Bencode {
 
     Element::~Element() {
     }
+
+    bool Element::operator!=(const Element& other) {
+        return !this->operator==(other);
+    }
 }

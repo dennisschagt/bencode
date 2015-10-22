@@ -26,7 +26,12 @@ namespace Bencode {
         ss << "e";
     }
 
-    Type Dictionary::getType() {
+    bool Dictionary::operator==(const Element& other) {
+        (void)other;
+        throw "Dictionary::operator==() Not implemented";
+    }
+
+    Type Dictionary::getType() const {
         return Type::DICTIONARY;
     }
 

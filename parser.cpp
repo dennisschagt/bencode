@@ -15,7 +15,7 @@ namespace Bencode {
     std::shared_ptr<Element> Parser::parse(const char* input, int length, int *usedLength) {
         std::shared_ptr<Element> currentElement;
         int curPos = 0;
-        switch(input[curPos]) {
+        switch (input[curPos]) {
         case 'd': { // Parse Dictionary
             std::shared_ptr<Dictionary> dictionary(new Dictionary());
             currentElement = dictionary;

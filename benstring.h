@@ -16,11 +16,12 @@ namespace Bencode {
         Benstring(Benstring&& obj);
         ~Benstring();
         Element* clone();
-        void toBencode(std::ostream &ss);
-        void operator=(const Benstring &other);
-        bool operator==(const Benstring &other);
-        bool operator!=(const Benstring &other);
-        Type getType();
+        void toBencode(std::ostream& ss);
+        void operator=(const Benstring& other);
+        bool operator==(const Benstring& other);
+        bool operator!=(const Benstring& other);
+        bool operator==(const Element& other);
+        Type getType() const;
         int getLength();
         int getString(char* byteString);
         std::string getString();

@@ -17,7 +17,8 @@ namespace Bencode {
         ~Dictionary();
         Element* clone();
         void toBencode(std::ostream &ss);
-        Type getType();
+        bool operator==(const Element& other);
+        Type getType() const;
         void addKeyValuePair(KeyValuePair pair);
         bool contains(const Benstring& key);
         std::shared_ptr<Element> getValue(const Benstring& key);

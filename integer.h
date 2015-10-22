@@ -15,7 +15,8 @@ namespace Bencode {
         void toBencode(std::ostream &ss);
         bool operator==(const Integer &other);
         bool operator!=(const Integer &other);
-        Type getType();
+        bool operator==(const Element& other);
+        Type getType() const;
         void setValue(int64_t value);
         int64_t getValue();
     };

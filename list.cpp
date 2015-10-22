@@ -18,7 +18,7 @@ namespace Bencode {
         return list;
     }
 
-    Type List::getType() {
+    Type List::getType() const {
         return Type::LIST;
     }
     
@@ -29,6 +29,11 @@ namespace Bencode {
             element->toBencode(ss);
         }
         ss << 'e';
+    }
+
+    bool List::operator==(const Element& other) {
+        (void)other;
+        throw "List::operator==() Not implemented";
     }
 
     void List::addElement(std::shared_ptr<Element> element) {

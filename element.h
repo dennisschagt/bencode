@@ -11,8 +11,10 @@ namespace Bencode {
         Element();
         virtual ~Element();
         virtual Element* clone() = 0;
-        virtual Type getType() = 0;
+        virtual Type getType() const = 0;
         virtual void toBencode(std::ostream &ss) = 0;
+        virtual bool operator==(const Element& other) = 0;
+        virtual bool operator!=(const Element& other);
     };
 }
 

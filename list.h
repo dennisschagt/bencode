@@ -15,7 +15,8 @@ namespace Bencode {
         ~List();
         Element* clone();
         void toBencode(std::ostream &ss);
-        Type getType();
+        bool operator==(const Element& other);
+        Type getType() const;
         void addElement(std::shared_ptr<Element> element);
         std::shared_ptr<Element> getElement(int index);
         ListIterator begin();

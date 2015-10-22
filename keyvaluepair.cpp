@@ -36,6 +36,20 @@ namespace Bencode {
         value->toBencode(ss);
     }
 
+    bool KeyValuePair::operator==(const KeyValuePair &other) {
+        if (*(this->key) != *(other.key)) {
+            return false;
+        }
+        if (*(this->value) != *(other.value)) {
+            return false;
+        }
+        return true;
+    }
+
+    bool KeyValuePair::operator!=(const KeyValuePair &other) {
+        return !this->operator==(other);
+    }
+
     std::shared_ptr<Benstring> KeyValuePair::getKey() {
         return this->key;
     }

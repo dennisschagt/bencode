@@ -14,6 +14,10 @@ bool test1() {
         std::cout << "KeyValuePair.clone() does not clone the value correctly" << std::endl;
         return true;
     }
+    if (pair1 != pair2) {
+        std::cout << "KeyValuePair clones are not equal." << std::endl;
+        return true;
+    }
     return false;
 }
 

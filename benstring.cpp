@@ -58,7 +58,14 @@ namespace Bencode {
         return !this->operator==(other);
     }
 
-    Type Benstring::getType() {
+    bool Benstring::operator==(const Element& other) {
+        if (other.getType() != Type::BENSTRING) {
+            return false;
+        }
+        return this->operator==(dynamic_cast<const Benstring&>(other));
+    }
+
+    Type Benstring::getType() const {
         return Type::BENSTRING;
     }
 

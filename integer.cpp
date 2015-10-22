@@ -32,11 +32,18 @@ namespace Bencode {
         return !this->operator==(other);
     }
 
+    bool Integer::operator==(const Element& other) {
+        if (other.getType() != Type::INTEGER) {
+            return false;
+        }
+        return this->operator==(dynamic_cast<const Integer&>(other));
+    }
+
     void Integer::setValue(int64_t value) {
         this->value = value;
     }
 
-    Type Integer::getType() {
+    Type Integer::getType() const {
         return Type::INTEGER;
     }
 
