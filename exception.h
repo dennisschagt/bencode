@@ -17,6 +17,9 @@ namespace Bencode {
     
     class ParseException : public Exception {
     };
+
+    class DuplicateKeyException : public Exception {
+    };
     
     class EndOfInputException : public ParseException {
     };

@@ -31,6 +31,12 @@ namespace Bencode {
     }
 
     void Dictionary::addKeyValuePair(KeyValuePair pair) {
+        // Check if key of KeyValuePair is not already in use in dictionary.
+        Benstring key = *(pair.getKey().get());
+        if (this->contains(key)) {
+            throw DuplicateKeyException();
+        }
+
         this->keyValues.push_back(pair);
     }
     
