@@ -27,9 +27,27 @@ namespace Bencode {
     }
 
     bool Dictionary::operator==(const Element& other) {
-        (void)other;
-        // TODO: Implement
-        throw "Dictionary::operator==() Not implemented";
+        if (other.getType() != Type::DICTIONARY) {
+            return false;
+        }
+        return this->operator==(dynamic_cast<const Dictionary&>(other));
+    }
+
+    bool Dictionary::operator==(const Dictionary& other) {
+        if (this->keyValues.size() != other.keyValues.size()) {
+            return false;
+        }
+        int nOfKeyValues = this->keyValues.size();
+        for (int i = 0; i < nOfKeyValues; ++i) {
+            if (this->keyValues[i] != other.keyValues[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    bool Dictionary::operator!=(const Dictionary& other) {
+        return !this->operator==(other);
     }
 
     Type Dictionary::getType() const {

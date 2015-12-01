@@ -18,6 +18,8 @@ namespace Bencode {
         Element* clone();
         void toBencode(std::ostream &ss);
         bool operator==(const Element& other);
+        bool operator==(const Dictionary& other);
+        bool operator!=(const Dictionary& other);
         Type getType() const;
         void addKeyValuePair(KeyValuePair pair);
         bool contains(const Benstring& key);

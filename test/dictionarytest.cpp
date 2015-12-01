@@ -19,8 +19,22 @@ bool test1() {
     return true;
 }
 
+// Two empty dictionaries are equal
+bool test2() {
+    Bencode::Dictionary dict1;
+    Bencode::Dictionary dict2;
+    if (dict1 != dict2) {
+        std::cout << "Two empty dictionaries should be equal" << std::endl;
+        return true;
+    }
+    return false;
+}
+
+// TODO: Check if dictionaries are always sorted correctly
+
 int main() {
     bool error = false;
      error |= test1();
+     error |= test2();
     return error;
 }
