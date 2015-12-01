@@ -28,6 +28,7 @@ namespace Bencode {
 
     bool Dictionary::operator==(const Element& other) {
         (void)other;
+        // TODO: Implement
         throw "Dictionary::operator==() Not implemented";
     }
 

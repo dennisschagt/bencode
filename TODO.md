@@ -1,3 +1,3 @@
-- Add operator==() and operator!=() to Dictionary, List, and KeyValuePair; Write tests for these functions
+- Add operator==() and operator!=() to Dictionary and write tests for these functions
 - Increase coverage of unit tests for Dictionary and Parser
 - Check for TODOs in source code

@@ -33,7 +33,25 @@ namespace Bencode {
 
     bool List::operator==(const Element& other) {
         (void)other;
+        // TODO: Implement
         throw "List::operator==() Not implemented";
+    }
+
+    bool List::operator==(const List& other) {
+        if (this->elements.size()  != other.elements.size()) {
+            return false;
+        }
+        int nOfElements = this->elements.size();
+        for (int i = 0; i < nOfElements; ++i) {
+            if (this->elements[i] != other.elements[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    bool List::operator!=(const List& other) {
+        return !this->operator==(other);
     }
 
     void List::addElement(std::shared_ptr<Element> element) {

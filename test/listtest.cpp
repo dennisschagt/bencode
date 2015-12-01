@@ -43,10 +43,38 @@ bool test3() {
     return false;
 }
 
+// Two empty lists are equal
+bool test4() {
+    Bencode::List list1;
+    Bencode::List list2;
+    if (list1 != list2) {
+        std::cout << "Two empty lists should be equal" << std::endl;
+        return true;
+    }
+    return false;
+}
+
+// Two lists with different length are not equal
+bool test5() {
+    Bencode::List list1;
+    Bencode::List list2;
+
+    std::shared_ptr<Bencode::Integer> integer(new Bencode::Integer);
+    list1.addElement(integer);
+
+    if (list1 == list2) {
+        std::cout << "Two lists with different length should not be equal" << std::endl;
+        return true;
+    }
+    return false;
+}
+
 int main() {
     bool error = false;
     error |= test1();
     error |= test2();
     error |= test3();
+    error |= test4();
+    error |= test5();
     return error;
 }
