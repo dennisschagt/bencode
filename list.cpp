@@ -32,9 +32,10 @@ namespace Bencode {
     }
 
     bool List::operator==(const Element& other) {
-        (void)other;
-        // TODO: Implement
-        throw "List::operator==() Not implemented";
+        if (other.getType() != Type::LIST) {
+            return false;
+        }
+        return this->operator==(dynamic_cast<const List&>(other));
     }
 
     bool List::operator==(const List& other) {
