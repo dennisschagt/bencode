@@ -50,24 +50,17 @@ namespace Bencode {
         return !this->operator==(other);
     }
 
-    std::shared_ptr<Benstring> KeyValuePair::getKey() {
+    std::shared_ptr<Benstring> KeyValuePair::getKey() const {
         return this->key;
     }
 
-    std::shared_ptr<Element> KeyValuePair::getValue() {
+    std::shared_ptr<Element> KeyValuePair::getValue() const {
         return this->value;
     }
 
-    bool KeyValuePair::compareKeyLexicograhpical(KeyValuePair &leftKV, KeyValuePair &rightKV) {
-        auto leftKey = leftKV.getKey();
-        auto rightKey = rightKV.getKey();
-
-        char* left = new char[leftKey->getLength()];
-        char* right = new char[rightKey->getLength()];
-
-        int leftLength = leftKey->getString(left);
-        int rightLength = rightKey->getString(right);
-
-        return std::lexicographical_compare(left, left + leftLength, right, right + rightLength);
+    bool KeyValuePair::compareKeyLexicograhpical(const KeyValuePair &leftKV, const KeyValuePair &rightKV) {
+        const Benstring leftKey = *(leftKV.getKey().get());
+        const Benstring rightKey = *(rightKV.getKey().get());
+        return Benstring::compareLexicograhpical(leftKey, rightKey);
     };
 }

@@ -25,6 +25,8 @@ namespace Bencode {
         int getLength();
         int getString(char* byteString);
         std::string getString();
+        static bool compareLexicograhpical(const Benstring &left,
+                                           const Benstring &right);
     };
 }
 

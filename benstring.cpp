@@ -82,4 +82,13 @@ namespace Bencode {
     std::string Benstring::getString() {
         return std::string(this->ben_str.get(), this->length);
     }
+
+    bool Benstring::compareLexicograhpical(const Benstring &left, const Benstring &right) {
+        char* leftPointer = left.ben_str.get();
+        char* rightPointer = right.ben_str.get();
+        return std::lexicographical_compare(leftPointer,
+                                            leftPointer + left.length,
+                                            rightPointer,
+                                            rightPointer + right.length);
+    }
 }
