@@ -1,5 +1,6 @@
 #include "bencode.h"
 #include <iostream>
+#include <sstream>
 
 // Check if exception is raised when adding a dupplicate key.
 bool test1() {
@@ -30,11 +31,30 @@ bool test2() {
     return false;
 }
 
-// TODO: Check if dictionaries are always sorted correctly
+// Check if keys in dictionary are always sorted correctly
+bool test3() {
+    std::shared_ptr<Bencode::Integer> integer1(new Bencode::Integer);
+    std::shared_ptr<Bencode::Integer> integer2(new Bencode::Integer);
+    Bencode::KeyValuePair pair1("key-z", integer1);
+    Bencode::KeyValuePair pair2("key-a", integer2);
+
+    Bencode::Dictionary dictionary;
+    dictionary.addKeyValuePair(pair1);
+    dictionary.addKeyValuePair(pair2);
+
+    std::stringstream ss;
+    dictionary.toBencode(ss);
+    if (ss.str() != "d5:key-ai0e5:key-zi0ee") {
+        std::cout << "KeyValuePairs should be sorted on the key field" << std::endl;
+        return true;
+    }
+    return false;
+}
 
 int main() {
     bool error = false;
      error |= test1();
      error |= test2();
+     error |= test3();
     return error;
 }
