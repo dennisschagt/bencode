@@ -65,7 +65,7 @@ namespace Bencode {
         this->keyValues.push_back(pair);
 
         sort(this->keyValues.begin(), this->keyValues.end(),
-             KeyValuePair::compereKeyLexicograhpical);
+             KeyValuePair::compareKeyLexicograhpical);
     }
     
     bool Dictionary::contains(const Benstring& key) {

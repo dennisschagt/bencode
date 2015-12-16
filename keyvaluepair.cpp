@@ -58,7 +58,7 @@ namespace Bencode {
         return this->value;
     }
 
-    bool KeyValuePair::compereKeyLexicograhpical(KeyValuePair &leftKV, KeyValuePair &rightKV) {
+    bool KeyValuePair::compareKeyLexicograhpical(KeyValuePair &leftKV, KeyValuePair &rightKV) {
         auto leftKey = leftKV.getKey();
         auto rightKey = rightKV.getKey();
 
