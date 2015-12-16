@@ -19,6 +19,7 @@ namespace Bencode {
         bool operator!=(const KeyValuePair &other);
         std::shared_ptr<Benstring> getKey();
         std::shared_ptr<Element> getValue();
+        static bool compereKeyLexicograhpical(KeyValuePair &left, KeyValuePair &right);
     };
 }
 

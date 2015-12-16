@@ -57,4 +57,17 @@ namespace Bencode {
     std::shared_ptr<Element> KeyValuePair::getValue() {
         return this->value;
     }
+
+    bool KeyValuePair::compereKeyLexicograhpical(KeyValuePair &leftKV, KeyValuePair &rightKV) {
+        auto leftKey = leftKV.getKey();
+        auto rightKey = rightKV.getKey();
+
+        char* left = new char[leftKey->getLength()];
+        char* right = new char[rightKey->getLength()];
+
+        int leftLength = leftKey->getString(left);
+        int rightLength = rightKey->getString(right);
+
+        return std::lexicographical_compare(left, left + leftLength, right, right + rightLength);
+    };
 }

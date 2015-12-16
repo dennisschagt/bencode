@@ -64,20 +64,8 @@ namespace Bencode {
 
         this->keyValues.push_back(pair);
 
-        // Sort KeyValuePairs in lexicographical key
         sort(this->keyValues.begin(), this->keyValues.end(),
-            [](KeyValuePair leftKV, KeyValuePair rightKV) -> bool{
-                auto leftKey = leftKV.getKey();
-                auto rightKey = rightKV.getKey();
-
-                char* left = new char[leftKey->getLength()];
-                char* right = new char[rightKey->getLength()];
-
-                int leftLength = leftKey->getString(left);
-                int rightLength = rightKey->getString(right);
-
-                return std::lexicographical_compare(left, left + leftLength, right, right + rightLength);
-            });
+             KeyValuePair::compereKeyLexicograhpical);
     }
     
     bool Dictionary::contains(const Benstring& key) {
