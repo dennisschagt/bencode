@@ -1,5 +1,4 @@
-#ifndef H_PARSER
-#define H_PARSER
+#pragma once
 
 #include "element.h"
 #include "dictionary.h"
@@ -19,5 +18,3 @@ namespace Bencode {
         std::shared_ptr<Integer> parseI(const char* input, int length);
     };
 }
-
-#endif // H_PARSER

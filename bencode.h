@@ -1,5 +1,4 @@
-#ifndef H_BENCODE
-#define H_BENCODE
+#pragma once
 
 #include "benstring.h"
 #include "dictionary.h"
@@ -9,5 +8,3 @@
 #include "list.h"
 #include "parser.h"
 #include "exception.h"
-
-#endif

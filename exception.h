@@ -1,5 +1,4 @@
-#ifndef H_EXCEPTION
-#define H_EXCEPTION
+#pragma once
 
 namespace Bencode {
     class Exception {
@@ -24,5 +23,3 @@ namespace Bencode {
     class EndOfInputException : public ParseException {
     };
 }
-
-#endif

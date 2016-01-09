@@ -1,5 +1,4 @@
-#ifndef H_BENSTRING
-#define H_BENSTRING
+#pragma once
 
 #include "element.h"
 #include <memory>
@@ -29,5 +28,3 @@ namespace Bencode {
                                            const Benstring &right);
     };
 }
-
-#endif

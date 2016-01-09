@@ -1,5 +1,4 @@
-#ifndef H_DICTIONARY
-#define H_DICTIONARY
+#pragma once
 
 #include "element.h"
 #include "keyvaluepair.h"
@@ -30,5 +29,3 @@ namespace Bencode {
         std::shared_ptr<Integer> getInteger(const Benstring& key);
     };
 }
-
-#endif

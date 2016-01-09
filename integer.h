@@ -1,5 +1,4 @@
-#ifndef H_INTEGER
-#define H_INTEGER
+#pragma once
 
 #include <cstdint>
 #include "element.h"
@@ -21,5 +20,3 @@ namespace Bencode {
         int64_t getValue();
     };
 }
-
-#endif

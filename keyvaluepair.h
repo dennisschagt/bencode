@@ -1,5 +1,4 @@
-#ifndef H_KEYVALUEPAIR
-#define H_KEYVALUEPAIR
+#pragma once
 
 #include "benstring.h"
 #include <memory>
@@ -23,5 +22,3 @@ namespace Bencode {
                                               const KeyValuePair &rightKV);
     };
 }
-
-#endif

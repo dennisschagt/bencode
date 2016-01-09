@@ -1,5 +1,4 @@
-#ifndef H_ELEMENT
-#define H_ELEMENT
+#pragma once
 
 #include <memory>
 
@@ -17,5 +16,3 @@ namespace Bencode {
         virtual bool operator!=(const Element& other);
     };
 }
-
-#endif

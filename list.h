@@ -1,5 +1,4 @@
-#ifndef H_LIST
-#define H_LIST
+#pragma once
 
 #include "element.h"
 #include <vector>
@@ -36,5 +35,3 @@ namespace Bencode {
     };
 }
 
-
-#endif
